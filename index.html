@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World</title>
+        <meta name="engine" content="php">
+        <link rel="stylesheet" href="http://www.steamdev.com/snippet/css/jquery.snippet.css" type="text/css" media="screen" charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.js"></script>
+        <style type="text/css" media="screen">
+            body {
+                font-family: Helvetica;
+            }
+            #input {
+                float: left;
+                width: 40%;
+            }
+            .field {
+                clear: left;
+                margin-bottom: 20px;
+            }
+            .field label {
+                float: left;
+                width: 30%;
+            }
+            a.remove {
+                position: absolute;
+                right: 0;
+            }
+            #output {
+                float: left;
+                width: 40%;
+            }
+        </style>
+    </head>
+    <body>
+
+<div id="input">
+    <form method="post">
+
+        <div class="field">
+            <label for="a">a</label>
+            <input name="a" value="a">
+        </div>
+        <div class="field">
+            <label for="b">b</label>
+            <input name="b" value="b">
+        </div>
+        <div class="field">
+            <label for="c">c</label>
+            <input name="c" value="c">
+        </div>
+        <div class="field">
+            <label for="d[foo]">d[foo]</label>
+            <input name="d[foo]" value="foo">
+        </div>
+        <div class="field">
+            <label for="d[bar]">d[bar]</label>
+            <input name="d[bar]" value="bar">
+        </div>
+        <div class="field">
+            <label for="e[]">e[]</label>
+            <input name="e[]" value="0">
+        </div>
+        <div class="field">
+            <label for="e[3]">e[3]</label>
+            <input name="e[3]" value="3">
+        </div>
+        <div class="field">
+            <label for="e[]">e[]</label>
+            <input name="e[]" value="4">
+        </div>
+        <div class="field">
+            <label for="e[1]">e[1]</label>
+            <input name="e[1]" value="1">
+        </div>
+        <div class="field">
+            <label for="e[]">e[]</label>
+            <input name="e[]" value="5">
+        </div>
+        <div class="field">
+            <label for="f[nested][foo]">f[nested][foo]</label>
+            <input name="f[nested][foo]" value="foo">
+        </div>
+        <div class="field">
+            <label for="f[nested][bar]">f[nested][bar]</label>
+            <input name="f[nested][bar]" value="bar">
+        </div>
+        <div class="field">
+            <label for="g[nested][1]">g[nested][1]</label>
+            <input name="g[nested][1]" value="1">
+        </div>
+        <div class="field">
+            <label for="g[nested][2]">g[nested][2]</label>
+            <input name="g[nested][2]" value="2">
+        </div>
+        <div class="field">
+            <label for="g[nestedpush][]">g[nestedpush][]</label>
+            <input name="g[nestedpush][]" value="0">
+        </div>
+        <div class="field">
+            <label for="h[0][foo]">h[0][foo]</label>
+            <input name="h[0][foo]" value="foo">
+        </div>
+        <div class="field">
+            <label for="h[0][bar]">h[0][bar]</label>
+            <input name="h[0][bar]" value="bar">
+        </div>
+        <div class="field">
+            <label for="h[1][foo]">h[1][foo]</label>
+            <input name="h[1][foo]" value="foo">
+        </div>
+        <div class="field">
+            <label for="h[1][bar]">h[1][bar]</label>
+            <input name="h[1][bar]" value="bar">
+        </div>
+        <div class="field">
+            <label for="i[][foo]">i[][foo]</label>
+            <input type="checkbox"name="i[][foo]" value="foo">
+        </div>
+        <div class="field">
+            <label for="i[][bar]">i[][bar]</label>
+            <input type="checkbox" name="i[][bar]" value="bar">
+        </div>
+        <div class="field">
+            <label for="super[crazy][][nested]">super[crazy][][nested]</label>
+            <select name="super[crazy][][nested]" multiple="multiple">
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+            </select>
+        </div>
+        <input type="submit">
+    </form>
+</div>
+
+<div id="output"><pre></pre></div>
+
+<div style="clear:both;"></div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        var f = $('form');
+        var output = $('#output');
+        
+        function update(){
+            var json = JSON.stringify(f.toJSON(), null, "\t");
+            $('<pre/>').text(json).appendTo(output.empty()).snippet('javascript', {style:'nedit', showNum:false});
+        }
+        
+        function remove(){
+            $(this).parents('.field').remove();
+            update();
+            return false;
+        }
+        
+        f.submit(update, false);
+        f.find(':input').change(update);
+        f.find('.field').each(function(){
+            $(this).append(
+                $('<a href="#">X</a>').click(remove)
+            );
+        });
+        
+        // init
+        update();
+    });
+</script>        
+<script src="http://www.steamdev.com/snippet/js/jquery.snippet.js" language="javascript" charset="utf-8"></script>
+<script src="https://raw.github.com/macek/jquery-to-json/master/jquery.to_json.js" language="javascript" charset="utf-8"></script>
+</body>
+</html>
