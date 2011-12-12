@@ -1,6 +1,6 @@
 # Converts an HTML form into a JavaScript object
 
-More usage information coming soon
+    [Check out the demo](macek.github.com/jquery-to-json)
 
 ## Usage
 
