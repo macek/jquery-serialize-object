@@ -15,11 +15,15 @@
       base[key] = value;
       return base;
     };
-    this.push_counter = function(key) {
+    this.push_counter = function(key, i) {
       if (push_counters[key] === void 0) {
         push_counters[key] = 0;
       }
-      return push_counters[key]++;
+      if (i === void 0) {
+        return push_counters[key]++;
+      } else if (i > push_counters[key]) {
+        return push_counters[key] = ++i;
+      }
     };
     $.each($(this).serializeArray(), function(i, elem) {
       var k, keys, merge, re, reverse_key;
@@ -30,11 +34,12 @@
       merge = elem.value;
       reverse_key = elem.name;
       while ((k = keys.pop()) !== void 0) {
+        re = new RegExp("\\[" + k + "\\]$");
+        reverse_key = reverse_key.replace(re, '');
         if (patterns.push.test(k)) {
-          re = new RegExp("\\[" + k + "\\]$");
-          reverse_key = reverse_key.replace(re, '');
           merge = _this.build([], _this.push_counter(reverse_key), merge);
         } else if (patterns.fixed.test(k)) {
+          _this.push_counter(reverse_key, k);
           merge = _this.build([], k, merge);
         } else if (patterns.named.test(k)) {
           merge = _this.build({}, k, merge);

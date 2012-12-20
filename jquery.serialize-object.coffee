@@ -15,9 +15,12 @@ do ($=jQuery) ->
       base[key] = value
       base
 
-    @push_counter = (key) ->
+    @push_counter = (key, i) ->
       push_counters[key] = 0 if push_counters[key] is undefined
-      push_counters[key]++
+      if i is undefined
+        push_counters[key]++
+      else if i > push_counters[key]
+        push_counters[key] = ++i
 
     $.each $(@).serializeArray(), (i, elem) =>
       return unless patterns.validate.test(elem.name)
@@ -28,12 +31,14 @@ do ($=jQuery) ->
 
       while (k = keys.pop()) isnt undefined
 
+        re = new RegExp("\\[#{k}\\]$")
+        reverse_key = reverse_key.replace re, ''
+
         if patterns.push.test k 
-          re = new RegExp("\\[#{k}\\]$")
-          reverse_key = reverse_key.replace re, ''
           merge = @build [], @push_counter(reverse_key), merge
 
         else if patterns.fixed.test k 
+          @push_counter(reverse_key, k)
           merge = @build [], k, merge
 
         else if patterns.named.test k
