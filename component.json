@@ -1,0 +1,12 @@
+{
+  "name": "jquery-serialize-object",
+  "version": "0.0.1",
+  "main": "./jquery.serialize-object.js",
+  "dependencies": {},
+  "_id": "jquery-serialize-object@0.0.1",
+  "description": "Converts an HTML form into a JavaScript object",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/macek/jquery-serialize-object.git"
+  }
+}
