@@ -5,11 +5,11 @@
     json = {};
     push_counters = {};
     patterns = {
-      validate: /^[a-zA-Z][a-zA-Z0-9_]*(?:\[(?:\d*|[a-zA-Z0-9_]+)\])*$/,
-      key: /[a-zA-Z0-9_]+|(?=\[\])/g,
+      validate: /^[a-zA-Z][a-zA-Z0-9_\-]*(?:\[(?:\d*|[a-zA-Z0-9_\-]+)\])*$/,
+      key: /[a-zA-Z0-9_\-]+|(?=\[\])/g,
       push: /^$/,
-      fixed: /^\d+$/,
-      named: /^[a-zA-Z0-9_]+$/
+      fixed: /^\-\d+$/,
+      named: /^[a-zA-Z0-9_\-]+$/
     };
     this.build = function(base, key, value) {
       base[key] = value;
