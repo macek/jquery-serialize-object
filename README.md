@@ -63,8 +63,8 @@ HTML form (input, textarea and select tags supported):
 
 ```
 
-Usage details
--------------
+Additional details
+------------------
 
 Current implementation of `.serializeObject()` relies in jQuery `.serializeArray()` to grab the form attributes and then create the object using the names.
 
