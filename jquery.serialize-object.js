@@ -44,12 +44,24 @@ This magic serialization plugin supports
       //Parses Numbers
       if(!isNaN(value)) {
         value =  parseFloat(value);
+        console.log(key);
        }
 
       //Booleans       
-      if (value.toString().match(/true|false/)) {
+      else if (value.toString().match(/true|false/)) {
         value = (/^true$/i).test(value);
        }
+       
+       //Send Null Values as Empty lists
+       else if(value === "empty") {
+        value = [ ] ;
+       }
+
+       //Send Null Values as Empty lists
+       else if(value === "null") {
+        value = null ;
+       }
+
 
       base[key] = value;
       return base;
