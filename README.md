@@ -30,6 +30,11 @@ HTML form (input, textarea and select tags supported):
   <!-- booleans and integers -->
   <input type="text" name="supports_boolean" value="true" />
   <input type="text" name="random_number" value="126884" />
+  
+  <!-- null and empty arrays-->
+  <input type="text" name="null_value" value="null" />
+  <input type="text" name="empty_list" value="empty" />
+  
 
 </form>
 
@@ -55,9 +60,13 @@ HTML form (input, textarea and select tags supported):
     { name: "serializeObject", language: "javascript" },
   ]
 
-  suppors_boolean: true,
+  suppots_boolean: true,
 
-  random_number: 126884
+  random_number: 126884,
+
+  null_value: null,
+
+  empty_list: []
 
 }
 
