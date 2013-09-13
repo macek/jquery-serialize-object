@@ -9,7 +9,7 @@
 */ 
  
 
- /*
+/*
 This magic serialization plugin supports
 ----------------------------------------
 <input name="honey[badger]" value="a">
@@ -45,11 +45,11 @@ This magic serialization plugin supports
       if(!isNaN(value)) {
         value =  parseFloat(value);
        }
-      
-      //Booleans
-      if(value.match(/true|false/)) {
-          value = (/^true$/i).test(value);
-      }
+
+      //Booleans       
+      if (value.toString().match(/true|false/)) {
+        value = (/^true$/i).test(value);
+       }
 
       base[key] = value;
       return base;
