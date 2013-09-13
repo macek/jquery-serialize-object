@@ -12,7 +12,16 @@ do ($=jQuery) ->
       named     : /^[a-zA-Z0-9_]+$/
 
     @build = (base, key, value) ->
-      base[key] = value
+     
+    
+          if(!isNaN(value)) {
+              value =  parseFloat(value);
+          }
+      
+          if(value == "true" || value == "false") {
+              value = (/^true$/i).test(value);
+          }
+     
       base
 
     @push_counter = (key) ->
