@@ -65,10 +65,13 @@ FormSerializer.prototype.addPair = function addPair(pair) {
 };
 
 FormSerializer.prototype.addPairs = function addPairs(pairs) {
+  var self = this;
   if (!this._helper.isArray(pairs)) {
     throw new Error("formSerializer.addPairs expects an Array");
   }
-  pairs.forEach(this.addPair.bind(this));
+  this._helper.each(pairs, function(idx, entry) {
+    self.addPair(this);
+  });
   return this;
 };
 
@@ -82,10 +85,11 @@ FormSerializer.prototype.serializeJSON = function serializeJSON() {
 
 },{}],2:[function(require,module,exports){
 var Helper = module.exports = function Helper(jQuery) {
-  
-  // jQuery.extend requirement
-  if (typeof jQuery.extend === 'function') {
+
+  // jQuery.extend and jQuery.each requirement
+  if (typeof jQuery.extend === 'function' && typeof jQuery.each === 'function') {
     this.extend = jQuery.extend;
+    this.each = jQuery.each;
   }
   else {
     throw new Error("jQuery is required to use jquery-serialize-object");
