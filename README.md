@@ -100,7 +100,15 @@ $ npm run-script browserify
 
 All pull requests **must** be backed by tests or they will be rejected.
 Additionally, please update the compiled file using [Google Closure Compiler][compiler].
-There is not an automated process for updating this file yet.
+There is not an automated process for updating this file yet. The following
+compiler settings should be used
+
+```js
+// ==ClosureCompiler==
+// @output_file_name jquery.serialize-object.compiled.js
+// @compilation_level SIMPLE_OPTIMIZATIONS
+// ==/ClosureCompiler==
+```
 
 [SO]: http://stackoverflow.com/a/8407771/184600
 [w3c_controls]: http://www.w3.org/TR/html401/interact/forms.html#h-17.13.2
