@@ -1,10 +1,3 @@
-/*!
- * jQuery serializeObject
- * http://github.com/macek/jquery-serialize-object
- *
- * Copyright 2013 Paul Macek <paulmacek@gmail.com>
- * Released under the BSD license
- */
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var FormSerializer = module.exports = function FormSerializer(helper) {
   this._helper    = helper;
@@ -68,7 +61,9 @@ FormSerializer.prototype.addPairs = function addPairs(pairs) {
   if (!this._helper.isArray(pairs)) {
     throw new Error("formSerializer.addPairs expects an Array");
   }
-  pairs.forEach(this.addPair.bind(this));
+  for (var i=0, len=pairs.length; i<len; i++) {
+    this.addPair(pairs[i]);
+  }
   return this;
 };
 
