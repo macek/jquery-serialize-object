@@ -1,0 +1,11 @@
+2.0.1
+Removed ECMAScript 5 dependencies
+- Array.prototype.forEach
+- Function.prototype.bind
+
+2.0.0
+Fully backed by tests
+.serializeObject works the same
+.serializeJSON is a new function
+CoffeeScript has been dropped
+Now bundles with browserify
