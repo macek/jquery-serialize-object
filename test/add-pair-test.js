@@ -42,7 +42,7 @@ describe("addPair", function() {
     assert.deepEqual(f.serialize(), {a: [ , "b", , "c"]});
   });
 
-  it("should merged mixed field types; named,push", function() {
+  it("should merge mixed field types; named,push", function() {
     f.addPair({name: "a[b][]", value: "c"});
     f.addPair({name: "a[b][]", value: "d"});
     assert.deepEqual(f.serialize(), {a: {b: ["c", "d"]}});
