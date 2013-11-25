@@ -10,7 +10,7 @@ attributes and then create the object using the input `name` attributes.
 
 This means it will serialize the inputs that are supported by
 `.serializeArray()`, that use the standard W3C rules for [successful controls][w3c_controls]
-to determine which inputs should be included; in particular: 
+to determine which inputs should be included; in particular:
 
 * The input cannot be disabled and must contain a name attribute.
 * No submit button value is serialized since the form is not submitted using a button.
@@ -70,7 +70,7 @@ $ npm test
 
 ## CoffeeScript
 
-CoffeeScript has been dropped for `>= 2.0.0`. If members of the community would 
+CoffeeScript has been dropped for `>= 2.0.0`. If members of the community would
 like to support this, please feel free to add a CoffeeScript version.
 
 If you'd like to use the the `1.0.0` version, it is still available [here][legacy].
@@ -79,7 +79,7 @@ If you'd like to use the the `1.0.0` version, it is still available [here][legac
 ## Contributing
 
 jquery-serialize-object utilizes [browserify][browserify] to keep great
-code composition in the core, facilitate testing, and prevent source code 
+code composition in the core, facilitate testing, and prevent source code
 duplication.
 
 To start developing, you will first need to install the development

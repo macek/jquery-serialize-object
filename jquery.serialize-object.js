@@ -46,7 +46,7 @@ FormSerializer.prototype._makeObject = function _nest(root, value) {
       value = this._build({}, k, value);
     }
   }
-  
+
   return value;
 };
 
@@ -82,7 +82,7 @@ FormSerializer.prototype.serializeJSON = function serializeJSON() {
 
 },{}],2:[function(require,module,exports){
 var Helper = module.exports = function Helper(jQuery) {
-  
+
   // jQuery.extend requirement
   if (typeof jQuery.extend === 'function') {
     this.extend = jQuery.extend;
