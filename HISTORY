@@ -1,3 +1,6 @@
+2.0.2
+Extend jQuery with serializeJSON function
+
 2.0.1
 Removed ECMAScript 5 dependencies
 - Array.prototype.forEach
