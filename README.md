@@ -101,7 +101,7 @@ dependencies:
 $ npm install
 ```
 
-Changes will primarily happen in `lib/form-serialier.js`, but feel free to take
+Changes will primarily happen in `lib/form-serializer.js`, but feel free to take
 a peek at `lib/plugin.js` to see how it integrates with jQuery.
 
 Once you have finished your changes, build the new plugin:
