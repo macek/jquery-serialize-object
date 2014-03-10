@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "serialize form fields into an object or JSON",
   "scripts": {
-    "test": "mocha -R tap",
+    "test": "mocha -R spec",
     "browserify": "browserify lib/plugin.js > jquery.serialize-object.js"
   },
   "repository": {
