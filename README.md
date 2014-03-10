@@ -1,6 +1,7 @@
-# jQuery Serialize Object
+jQuery Serialize Object
+=======================
 
-###### As seen on StackOverflow: [Convert forms to JSON LIKE A BOSS][SO].
+**As seen on StackOverflow: [Convert forms to JSON LIKE A BOSS][SO].**
 
 Adds the method `serializeObject` to jQuery, to perform complex form
 serialization into JavaScript objects.
@@ -17,7 +18,8 @@ to determine which inputs should be included; in particular:
 * Data from `<input type="file">` inputs are not serialized.
 
 
-## Installation
+Installation
+------------
 
 You can include the plugin in the `HEAD` element or at the bottom of your `BODY`
 tag. Wherever you choose to add it, it **must** be included after your jQuery.
@@ -29,7 +31,8 @@ tag. Wherever you choose to add it, it **must** be included after your jQuery.
 </head>
 ```
 
-## 2.0
+2.0
+---
 
 Version 2.0 takes jquery-serialize-object into maturity. It is now backed by a
 full test suite so you can be confident that it will work in your web app.
@@ -41,7 +44,8 @@ for both cases.
 Look forward to these in `>= 2.1.0`
 
 
-## API
+API
+---
 
 Given a basic HTML form
 
@@ -70,7 +74,8 @@ $('form#contact').serializeJSON();
 ```
 
 
-## Tests
+Tests
+-----
 
 To run the tests, you will need [node.js][node] and [mocha][mocha].
 
@@ -80,7 +85,8 @@ $ npm test
 ```
 
 
-## CoffeeScript
+CoffeeScript
+------------
 
 CoffeeScript has been dropped for `>= 2.0.0`. If members of the community would
 like to support this, please feel free to add a CoffeeScript version.
@@ -88,7 +94,8 @@ like to support this, please feel free to add a CoffeeScript version.
 If you'd like to use the the `1.0.0` version, it is still available [here][legacy].
 
 
-## Contributing
+Contributing
+------------
 
 jquery-serialize-object utilizes [browserify][browserify] to keep great
 code composition in the core, facilitate testing, and prevent source code
