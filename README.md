@@ -17,6 +17,18 @@ to determine which inputs should be included; in particular:
 * Data from `<input type="file">` inputs are not serialized.
 
 
+## Installation
+
+You can include the plugin in the `HEAD` element or at the bottom of your `BODY`
+tag. Wherever you choose to add it, it **must** be included after your jQuery.
+
+```html
+<head>
+  <script src="jquery.min.js"></script>
+  <script src="jquery.serialize-object.compiled.js"></script>
+</head>
+```
+
 ## 2.0
 
 Version 2.0 takes jquery-serialize-object into maturity. It is now backed by a
