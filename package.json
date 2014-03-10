@@ -2,7 +2,6 @@
   "name": "form-serializer",
   "version": "2.0.1",
   "description": "serialize form fields into an object or JSON",
-  "main": "lib/form-serializer.js",
   "scripts": {
     "test": "mocha -R tap",
     "browserify": "browserify lib/plugin.js > jquery.serialize-object.js"
