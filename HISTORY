@@ -1,3 +1,7 @@
+2.2.0
+Expose regexp patterns via FormSerializer.patterns
+Improve legibility of FormSerializer
+
 2.1.0
 Fix #16: .serializeJSON was not properly exposed to jQuery
 Front-end testing with mocha and chai
