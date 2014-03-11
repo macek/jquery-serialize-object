@@ -12,4 +12,13 @@ describe("jQuery plugin", function() {
     assert.strictEqual($.fn.serializeJSON, FormSerializer.serializeJSON);
   });
 
+  it("exposes FormSerializer.patterns", function() {
+    var p = FormSerializer.patterns;
+    assert.typeOf(p.validate, "regexp");
+    assert.typeOf(p.key,      "regexp");
+    assert.typeOf(p.push,     "regexp");
+    assert.typeOf(p.fixed,    "regexp");
+    assert.typeOf(p.named,    "regexp");
+  });
+
 });

@@ -31,14 +31,7 @@
 
     // private variables
     var data     = {},
-        pushes   = {},
-        patterns = {
-          validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
-          key:      /[a-z0-9_]+|(?=\[\])/gi,
-          push:     /^$/,
-          fixed:    /^\d+$/,
-          named:    /^[a-z0-9_]+$/i
-        };
+        pushes   = {};
 
     // private API
     function build(base, key, value) {
@@ -48,23 +41,23 @@
 
     function makeObject(root, value) {
 
-      var keys = root.match(patterns.key), k;
+      var keys = root.match(FormSerializer.patterns.key), k;
 
       // nest, nest, ..., nest
       while ((k = keys.pop()) !== undefined) {
         // foo[]
-        if (patterns.push.test(k)) {
+        if (FormSerializer.patterns.push.test(k)) {
           var idx = incrementPush(root.replace(/\[\]$/, ''));
           value = build([], idx, value);
         }
 
         // foo[n]
-        else if (patterns.fixed.test(k)) {
+        else if (FormSerializer.patterns.fixed.test(k)) {
           value = build([], k, value);
         }
 
         // foo; foo[bar]
-        else if (patterns.named.test(k)) {
+        else if (FormSerializer.patterns.named.test(k)) {
           value = build({}, k, value);
         }
       }
@@ -80,7 +73,7 @@
     }
 
     function addPair(pair) {
-      if (!patterns.validate.test(pair.name)) return this;
+      if (!FormSerializer.patterns.validate.test(pair.name)) return this;
       var obj = makeObject(pair.name, pair.value);
       data = helper.extend(true, data, obj);
       return this;
@@ -109,6 +102,14 @@
     this.addPairs = addPairs;
     this.serialize = serialize;
     this.serializeJSON = serializeJSON;
+  };
+
+  FormSerializer.patterns = {
+    validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
+    key:      /[a-z0-9_]+|(?=\[\])/gi,
+    push:     /^$/,
+    fixed:    /^\d+$/,
+    named:    /^[a-z0-9_]+$/i
   };
 
   FormSerializer.serializeObject = function serializeObject() {
