@@ -28,86 +28,93 @@
 }(this, function(root, exports, $) {
 
   var FormSerializer = exports.FormSerializer = function FormSerializer(helper) {
-    this._helper    = helper;
-    this._object    = {};
-    this._pushes    = {};
-    this._patterns  = {
-      validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
-      key:      /[a-z0-9_]+|(?=\[\])/gi,
-      push:     /^$/,
-      fixed:    /^\d+$/,
-      named:    /^[a-z0-9_]+$/i
-    };
-  };
 
-  FormSerializer.prototype._build = function _build(base, key, value) {
-    base[key] = value;
-    return base;
-  };
+    // private variables
+    var data     = {},
+        pushes   = {},
+        patterns = {
+          validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
+          key:      /[a-z0-9_]+|(?=\[\])/gi,
+          push:     /^$/,
+          fixed:    /^\d+$/,
+          named:    /^[a-z0-9_]+$/i
+        };
 
-  FormSerializer.prototype._makeObject = function _nest(root, value) {
+    // private API
+    function build(base, key, value) {
+      base[key] = value;
+      return base;
+    }
 
-    var keys = root.match(this._patterns.key), k;
+    function makeObject(root, value) {
 
-    // nest, nest, ..., nest
-    while ((k = keys.pop()) !== undefined) {
-      // foo[]
-      if (this._patterns.push.test(k)) {
-        var idx = this._incrementPush(root.replace(/\[\]$/, ''));
-        value = this._build([], idx, value);
+      var keys = root.match(patterns.key), k;
+
+      // nest, nest, ..., nest
+      while ((k = keys.pop()) !== undefined) {
+        // foo[]
+        if (patterns.push.test(k)) {
+          var idx = incrementPush(root.replace(/\[\]$/, ''));
+          value = build([], idx, value);
+        }
+
+        // foo[n]
+        else if (patterns.fixed.test(k)) {
+          value = build([], k, value);
+        }
+
+        // foo; foo[bar]
+        else if (patterns.named.test(k)) {
+          value = build({}, k, value);
+        }
       }
 
-      // foo[n]
-      else if (this._patterns.fixed.test(k)) {
-        value = this._build([], k, value);
+      return value;
+    }
+
+    function incrementPush(key) {
+      if (pushes[key] === undefined) {
+        pushes[key] = 0;
       }
+      return pushes[key]++;
+    }
 
-      // foo; foo[bar]
-      else if (this._patterns.named.test(k)) {
-        value = this._build({}, k, value);
+    function addPair(pair) {
+      if (!patterns.validate.test(pair.name)) return this;
+      var obj = makeObject(pair.name, pair.value);
+      data = helper.extend(true, data, obj);
+      return this;
+    }
+
+    function addPairs(pairs) {
+      if (!helper.isArray(pairs)) {
+        throw new Error("formSerializer.addPairs expects an Array");
       }
+      for (var i=0, len=pairs.length; i<len; i++) {
+        this.addPair(pairs[i]);
+      }
+      return this;
     }
 
-    return value;
-  };
-
-  FormSerializer.prototype._incrementPush = function _incrementPush(key) {
-    if (this._pushes[key] === undefined) {
-      this._pushes[key] = 0;
+    function serialize() {
+      return data;
     }
-    return this._pushes[key]++;
-  };
 
-  FormSerializer.prototype.addPair = function addPair(pair) {
-    if (!this._patterns.validate.test(pair.name)) return this;
-    var obj = this._makeObject(pair.name, pair.value);
-    this._object = this._helper.extend(true, this._object, obj);
-    return this;
-  };
-
-  FormSerializer.prototype.addPairs = function addPairs(pairs) {
-    if (!this._helper.isArray(pairs)) {
-      throw new Error("formSerializer.addPairs expects an Array");
+    function serializeJSON() {
+      return JSON.stringify(serialize());
     }
-    for (var i=0, len=pairs.length; i<len; i++) {
-      this.addPair(pairs[i]);
-    }
-    return this;
-  };
 
-  FormSerializer.prototype.serialize = function serialize() {
-    return this._object
-  };
-
-  FormSerializer.prototype.serializeJSON = function serializeJSON() {
-    return JSON.stringify(this.serialize());
+    // public API
+    this.addPair = addPair;
+    this.addPairs = addPairs;
+    this.serialize = serialize;
+    this.serializeJSON = serializeJSON;
   };
 
   FormSerializer.serializeObject = function serializeObject() {
     if (this.length > 1) {
       return new Error("jquery-serialize-object can only serialize one form at a time");
     }
-
     return new FormSerializer($).
       addPairs(this.serializeArray()).
       serialize();
@@ -117,7 +124,6 @@
     if (this.length > 1) {
       return new Error("jquery-serialize-object can only serialize one form at a time");
     }
-
     return new FormSerializer($).
       addPairs(this.serializeArray()).
       serializeJSON();
