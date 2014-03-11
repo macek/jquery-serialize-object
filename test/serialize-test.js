@@ -8,5 +8,5 @@ describe("serialize", function() {
     var f = new FormSerializer(helper);
     assert.deepEqual(f.serialize(), {});
   });
-  
+
 });

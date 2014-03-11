@@ -3,7 +3,7 @@ var assert         = require("assert"),
     FormSerializer = require("../lib/form-serializer");
 
 describe("serializeJSON", function() {
-  
+
   it("should return the object", function() {
     var f = new FormSerializer(helper);
     f.addPair({name: "a[b]", value: "c"});
