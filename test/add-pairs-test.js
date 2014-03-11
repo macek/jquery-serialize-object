@@ -1,12 +1,10 @@
-var assert         = require("assert"),
-    helper         = require("./helper"),
-    FormSerializer = require("../lib/form-serializer");
+var assert = chai.assert;
 
 describe("addPairs", function() {
 
   var f;
   beforeEach(function() {
-    f = new FormSerializer(helper);
+    f = new FormSerializer($);
   });
 
   it("should accept an array of pairs", function() {

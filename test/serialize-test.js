@@ -1,11 +1,9 @@
-var assert         = require("assert"),
-    helper         = require("./helper"),
-    FormSerializer = require("../lib/form-serializer");
+var assert = chai.assert;
 
 describe("serialize", function() {
 
   it("should return the object", function() {
-    var f = new FormSerializer(helper);
+    var f = new FormSerializer($);
     assert.deepEqual(f.serialize(), {});
   });
 

@@ -1,12 +1,10 @@
-var assert         = require("assert"),
-    helper         = require("./helper"),
-    FormSerializer = require("../lib/form-serializer");
+var assert = chai.assert;
 
 describe("addPair", function() {
 
   var f;
   beforeEach(function() {
-    f = new FormSerializer(helper);
+    f = new FormSerializer($);
   });
 
   it("should merge a named field", function() {
