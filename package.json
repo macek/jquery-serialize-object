@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "jquery-extend": "~2.0.3",
-    "mocha": "~1.12.1",
     "browserify": "~2.29.1"
+    "mocha": "^1.17.1",
   }
 }
