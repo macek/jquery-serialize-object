@@ -26,7 +26,7 @@ describe("addPair", function() {
     f.addPair({name: "a[]", value: "1"});
     f.addPair({name: "a[]", value: "2"});
     f.addPair({name: "a[]", value: "3"});
-    assert.deepEqual(f.serialize(), {a: [1, 2, 3]});
+    assert.deepEqual(f.serialize(), {a: ["1", "2", "3"]});
   });
 
   it("should merge a fixed array field", function() {
