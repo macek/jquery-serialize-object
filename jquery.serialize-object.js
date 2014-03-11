@@ -113,8 +113,19 @@
       serialize();
   };
 
+  FormSerializer.serializeJSON = function serializeJSON() {
+    if (this.length > 1) {
+      return new Error("jquery-serialize-object can only serialize one form at a time");
+    }
+
+    return new FormSerializer($).
+      addPairs(this.serializeArray()).
+      serializeJSON();
+  };
+
   if (typeof $.fn !== "undefined") {
     $.fn.serializeObject = FormSerializer.serializeObject;
+    $.fn.serializeJSON   = FormSerializer.serializeJSON;
   }
 
   return FormSerializer;
