@@ -16,6 +16,10 @@
     "json",
     "object"
   ],
+  "plugin": {
+    "type": "jQuery",
+    "name": "jQuery serializeObject"
+  },
   "author": "macek <paulmacek@gmail.com>",
   "license": "BSD",
   "bugs": {
