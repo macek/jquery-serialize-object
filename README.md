@@ -27,7 +27,7 @@ tag. Wherever you choose to add it, it **must** be included after your jQuery.
 ```html
 <head>
   <script src="jquery.min.js"></script>
-  <script src="jquery.serialize-object.compiled.js"></script>
+  <script src="jquery.serialize-object.min.js"></script>
 </head>
 ```
 
@@ -114,20 +114,10 @@ a peek at `lib/plugin.js` to see how it integrates with jQuery.
 Once you have finished your changes, build the new plugin:
 
 ```sh
-$ npm run-script browserify
+$ npm run-script build
 ```
 
 All pull requests **must** be backed by tests or they will be rejected.
-Additionally, please update the compiled file using [Google Closure Compiler][compiler].
-There is not an automated process for updating this file yet. The following
-compiler settings should be used
-
-```js
-// ==ClosureCompiler==
-// @output_file_name jquery.serialize-object.compiled.js
-// @compilation_level SIMPLE_OPTIMIZATIONS
-// ==/ClosureCompiler==
-```
 
 [SO]: http://stackoverflow.com/a/8407771/184600
 [w3c_controls]: http://www.w3.org/TR/html401/interact/forms.html#h-17.13.2
@@ -136,4 +126,3 @@ compiler settings should be used
 [mocha]: http://visionmedia.github.io/mocha/
 [legacy]: https://github.com/macek/jquery-serialize-object/releases/tag/1.0.0
 [browserify]: https://github.com/substack/node-browserify
-[compiler]: http://closure-compiler.appspot.com
