@@ -77,11 +77,16 @@ $('form#contact').serializeJSON();
 Tests
 -----
 
-To run the tests, you will need [node.js][node] and [mocha][mocha].
+If you have [node.js][node] installed, as a convenience, you can run
 
 ```sh
-$ npm install
 $ npm test
+```
+
+If you do not have node installed, simply
+
+```sh
+$ open ./test/test.html
 ```
 
 
@@ -97,19 +102,7 @@ If you'd like to use the the `1.0.0` version, it is still available [here][legac
 Contributing
 ------------
 
-jquery-serialize-object utilizes [browserify][browserify] to keep great
-code composition in the core, facilitate testing, and prevent source code
-duplication.
-
-To start developing, you will first need to install the development
-dependencies:
-
-```sh
-$ npm install
-```
-
-Changes will primarily happen in `lib/form-serializer.js`, but feel free to take
-a peek at `lib/plugin.js` to see how it integrates with jQuery.
+All pull requests **must** be backed by tests or they will be rejected.
 
 Once you have finished your changes, build the new plugin:
 
@@ -117,12 +110,11 @@ Once you have finished your changes, build the new plugin:
 $ npm run-script build
 ```
 
-All pull requests **must** be backed by tests or they will be rejected.
+**Do not** bump the version. I will handle versioning.
+
 
 [SO]: http://stackoverflow.com/a/8407771/184600
 [w3c_controls]: http://www.w3.org/TR/html401/interact/forms.html#h-17.13.2
 [json]: http://json.org
 [node]: http://nodejs.org
-[mocha]: http://visionmedia.github.io/mocha/
 [legacy]: https://github.com/macek/jquery-serialize-object/releases/tag/1.0.0
-[browserify]: https://github.com/substack/node-browserify
