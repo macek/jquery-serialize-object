@@ -27,9 +27,6 @@
     "url": "https://github.com/macek/jquery-serialize-object/issues"
   },
   "devDependencies": {
-    "jquery-extend": "~2.0.3",
-    "mocha": "^1.17.1",
-    "browserify": "^3.32.1",
     "uglify-js": "^2.4.12"
   }
 }
