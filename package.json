@@ -3,9 +3,8 @@
   "version": "2.0.1",
   "description": "serialize form fields into an object or JSON",
   "scripts": {
-    "build": "npm run-script browserify && npm run-script minify",
-    "browserify": "{ node build/header.js; browserify lib/plugin.js; } > jquery.serialize-object.js",
     "test": "open ./test/test.html",
+    "build": "npm run-script minify",
     "minify": "uglifyjs jquery.serialize-object.js -m -c --comments > jquery.serialize-object.min.js"
   },
   "repository": {
