@@ -2,6 +2,7 @@
   "name": "form-serializer",
   "version": "2.0.1",
   "description": "serialize form fields into an object or JSON",
+  "main": "./jquery.serialize-object.js",
   "scripts": {
     "test": "open ./test/test.html",
     "build": "npm run-script minify",
