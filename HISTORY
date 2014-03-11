@@ -1,3 +1,12 @@
+2.1.0
+Fix #16: .serializeJSON was not properly exposed to jQuery
+Front-end testing with mocha and chai
+Automated build process with uglifyjs
+Removed server-side dependencies
+- browserify
+- mocha
+- jquery-extend
+
 2.0.1
 Removed ECMAScript 5 dependencies
 - Array.prototype.forEach
