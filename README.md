@@ -54,7 +54,7 @@ Given a basic HTML form
   <input name="user[email]" value="jsmith@example.com">
   <input name="user[pets][]" type="checkbox" value="cat" checked>
   <input name="user[pets][]" type="checkbox" value="dog" checked>
-  <input name="user[pets][]" type="checkbox" value="bird" checked>
+  <input name="user[pets][]" type="checkbox" value="bird">
   <input type="submit">
 </form>
 ```
