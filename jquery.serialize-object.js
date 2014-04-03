@@ -105,11 +105,11 @@
   };
 
   FormSerializer.patterns = {
-    validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
-    key:      /[a-z0-9_]+|(?=\[\])/gi,
+    validate: /^[^\[\]]+(?:\[(?:\d*|[^\[\]]+)\])*$/i,
+    key:      /[^\[\]]+|(?=\[\])/gi,
     push:     /^$/,
     fixed:    /^\d+$/,
-    named:    /^[a-z0-9_]+$/i
+    named:    /^[^\[\]]+$/i
   };
 
   FormSerializer.serializeObject = function serializeObject() {
