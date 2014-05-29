@@ -117,7 +117,7 @@
       return new Error("jquery-serialize-object can only serialize one form at a time");
     }
     return new FormSerializer($).
-      addPairs(this.serializeArray()).
+      addPairs(this.find(':input').serializeArray()).
       serialize();
   };
 
@@ -126,7 +126,7 @@
       return new Error("jquery-serialize-object can only serialize one form at a time");
     }
     return new FormSerializer($).
-      addPairs(this.serializeArray()).
+      addPairs(this.find(':input').serializeArray()).
       serializeJSON();
   };
 
