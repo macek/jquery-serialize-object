@@ -27,6 +27,14 @@
 
 }(this, function(root, exports, $) {
 
+  var patterns = {
+    validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
+    key:      /[a-z0-9_]+|(?=\[\])/gi,
+    push:     /^$/,
+    fixed:    /^\d+$/,
+    named:    /^[a-z0-9_]+$/i
+  };
+
   var FormSerializer = exports.FormSerializer = function FormSerializer(helper) {
 
     // private variables
@@ -41,23 +49,23 @@
 
     function makeObject(root, value) {
 
-      var keys = root.match(FormSerializer.patterns.key), k;
+      var keys = root.match(patterns.key), k;
 
       // nest, nest, ..., nest
       while ((k = keys.pop()) !== undefined) {
         // foo[]
-        if (FormSerializer.patterns.push.test(k)) {
+        if (patterns.push.test(k)) {
           var idx = incrementPush(root.replace(/\[\]$/, ''));
           value = build([], idx, value);
         }
 
         // foo[n]
-        else if (FormSerializer.patterns.fixed.test(k)) {
+        else if (patterns.fixed.test(k)) {
           value = build([], k, value);
         }
 
         // foo; foo[bar]
-        else if (FormSerializer.patterns.named.test(k)) {
+        else if (patterns.named.test(k)) {
           value = build({}, k, value);
         }
       }
@@ -73,7 +81,7 @@
     }
 
     function addPair(pair) {
-      if (!FormSerializer.patterns.validate.test(pair.name)) return this;
+      if (!patterns.validate.test(pair.name)) return this;
       var obj = makeObject(pair.name, pair.value);
       data = helper.extend(true, data, obj);
       return this;
@@ -104,13 +112,7 @@
     this.serializeJSON = serializeJSON;
   };
 
-  FormSerializer.patterns = {
-    validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
-    key:      /[a-z0-9_]+|(?=\[\])/gi,
-    push:     /^$/,
-    fixed:    /^\d+$/,
-    named:    /^[a-z0-9_]+$/i
-  };
+  FormSerializer.patterns = patterns;
 
   FormSerializer.serializeObject = function serializeObject() {
     if (this.length > 1) {
