@@ -35,7 +35,7 @@
     named:    /^[a-z0-9_]+$/i
   };
 
-  var FormSerializer = exports.FormSerializer = function FormSerializer(helper) {
+  function FormSerializer(helper) {
 
     // private variables
     var data     = {},
@@ -110,7 +110,7 @@
     this.addPairs = addPairs;
     this.serialize = serialize;
     this.serializeJSON = serializeJSON;
-  };
+  }
 
   FormSerializer.patterns = patterns;
 
@@ -136,6 +136,8 @@
     $.fn.serializeObject = FormSerializer.serializeObject;
     $.fn.serializeJSON   = FormSerializer.serializeJSON;
   }
+
+  exports.FormSerializer = FormSerializer;
 
   return FormSerializer;
 }));
