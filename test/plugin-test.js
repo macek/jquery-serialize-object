@@ -21,4 +21,30 @@ describe("jQuery plugin", function() {
     assert.typeOf(p.named,    "regexp");
   });
 
+  it("Override pattern using dot notation", function() {
+    var form = $('<form><input name="a.b.c" value="d" />');
+
+    assert.deepEqual(form.serializeObject(), {});
+
+    $.extend(FormSerializer.patterns, {
+      validate: /^[a-z][a-z0-9_]*(?:\.[a-z0-9_]+)*(?:\[\])?$/i
+    });
+
+    assert.deepEqual(form.serializeObject(), { a: { b: { c: 'd' } } });
+  });
+
+  it("Override patterns allowing hyphens", function() {
+    var form = $('<form><input name="a-b[c]" value="d" />');
+
+    assert.deepEqual(form.serializeObject(), {});
+
+    $.extend(FormSerializer.patterns, {
+      validate: /^[a-z][a-z0-9_-]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
+      key:      /[a-z0-9_-]+|(?=\[\])/gi,
+      named:    /^[a-z0-9_-]+$/i
+    });
+
+    assert.deepEqual(form.serializeObject(), { 'a-b': { c: 'd' } });
+  });
+
 });
