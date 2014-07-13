@@ -1,6 +1,6 @@
 {
   "name": "form-serializer",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "serialize form fields into an object or JSON",
   "main": "./jquery.serialize-object.js",
   "scripts": {
