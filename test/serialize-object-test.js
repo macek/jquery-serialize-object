@@ -6,18 +6,18 @@ describe("serializeObject", function() {
     var expected,
         actual,
         forms = {
-          single: $('<form>' +
+          $single: $('<form>' +
                       '<input type="text" name="foo" value="on"/>' +
                       '<input type="checkbox" name="a" checked/>' +
                       '<input type="checkbox" name="x"/>' +
                     '</form>'),
-          multiple: $('<form>' +
+          $multiple: $('<form>' +
                         '<input type="text" name="foo" value="on"/>' +
                         '<input type="checkbox" name="a" checked/>' +
                         '<input type="checkbox" name="b" checked/>' +
                         '<input type="checkbox" name="x"/>' +
                       '</form>'),
-          nested: $('<form>' +
+          $nested: $('<form>' +
                       '<input type="text" name="foo" value="on"/>' +
                       '<input type="checkbox" name="options[mu][a]" checked/>' +
                       '<input type="checkbox" name="options[mu][b]" checked/>' +
@@ -26,15 +26,15 @@ describe("serializeObject", function() {
         };
 
     expected = {foo: 'on', a: true};
-    actual = $(forms.single).serializeObject();
+    actual = forms.$single.serializeObject();
     assert.deepEqual(actual, expected);
 
     expected = {foo: 'on', a: true, b: true};
-    actual = $(forms.multiple).serializeObject();
+    actual = forms.$multiple.serializeObject();
     assert.deepEqual(actual, expected);
 
     expected = {foo: 'on', options: {mu: {a: true, b: true}}};
-    actual = $(forms.nested).serializeObject();
+    actual = forms.$nested.serializeObject();
     assert.deepEqual(actual, expected);
   });
 
