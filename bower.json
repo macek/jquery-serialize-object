@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git://github.com/macek/jquery-serialize-object.git"
   },
+  "ignore": [],
   "keywords": [
     "form",
     "serialize",
