@@ -80,19 +80,18 @@
       return pushes[key]++;
     }
 
-    function isCheckbox (name) {
-      var selector = '[name="' + name + '"]';
-      return $(selector, $form).attr('type') === 'checkbox';
+    function encode(pair) {
+      switch ($('[name="' + pair.name + '"]', $form).attr("type")) {
+        case "checkbox":
+          return pair.value === "on" ? true : pair.value;
+        default:
+          return pair.value;
+      }
     }
 
     function addPair(pair) {
-      var obj;
-
       if (!patterns.validate.test(pair.name)) return this;
-      if (pair.value === 'on' && isCheckbox(pair.name)) {
-        pair.value = true
-      }
-      obj = makeObject(pair.name, pair.value);
+      var obj = makeObject(pair.name, encode(pair));
       data = helper.extend(true, data, obj);
       return this;
     }
