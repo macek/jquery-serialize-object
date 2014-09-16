@@ -41,7 +41,10 @@ Moving ahead, on top of core serialization, `.serializeObject` will support
 correct serializaton for `boolean` and `number` values, resulting valid types
 for both cases.
 
-Look forward to these in `>= 2.1.0`
+Look forward to these `>= 2.5.0`
+
+**Update:** `2.4.0` now serializes `<input type="checkbox">` as a `boolean`. See
+the [test][boolean] for specific behavior.
 
 
 API
@@ -190,3 +193,4 @@ $ npm run-script build
 [legacy]: https://github.com/macek/jquery-serialize-object/releases/tag/1.0.0
 [dash-notation]: https://github.com/macek/jquery-serialize-object/issues/6
 [dot-notation]: https://github.com/macek/jquery-serialize-object/issues/4
+[boolean]: https://github.com/macek/jquery-serialize-object/blob/master/test/integration/encode-test.js
