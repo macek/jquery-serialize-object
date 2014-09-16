@@ -1,3 +1,7 @@
+2.4.2
+-----
+* add missing ignore entry to bower.json. wups!
+
 2.4.1
 -----
 * change deprecated component.json to bower.json
