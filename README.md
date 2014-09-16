@@ -21,6 +21,16 @@ to determine which inputs should be included; in particular:
 Installation
 ------------
 
+**option 1: Bower**
+
+```sh
+$ bower install jquery-serialize-object
+```
+
+**option 2: Manual**
+
+Copy the `dist/jquery-serialize-object.min.js` to your project.
+
 You can include the plugin in the `HEAD` element or at the bottom of your `BODY`
 tag. Wherever you choose to add it, it **must** be included after your jQuery.
 
