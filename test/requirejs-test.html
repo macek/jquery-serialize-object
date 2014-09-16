@@ -1,0 +1,29 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="lib/mocha.css" />
+</head>
+<body>
+  <div id="mocha">
+    <h1>RequireJS test</h1>
+    <h2>Both results should say <code>"function"</code></h2>
+    <pre>
+      typeof FormSerializer; // <code id="test1">waiting...</code>
+      typeof $.fn.serializeObject; // <code id="test2">waiting...</code>
+    </pre>
+  </div>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script>
+    require.config({
+      paths: {
+        jquery: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min"
+      }
+    });
+    require(["../jquery.serialize-object.min", "jquery"], function(FormSerializer, $) {
+      $("#test1").text(JSON.stringify(typeof FormSerializer));
+      $("#test2").text(JSON.stringify(typeof $.fn.serializeObject));
+    });
+  </script>
+</body>
+</html>

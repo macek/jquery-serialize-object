@@ -9,23 +9,23 @@
 
   // AMD
   if (typeof define === "function" && define.amd) {
-    define(["jquery", "exports"], function($, exports) {
-      factory(root, exports, $);
+    define(["exports", "jquery"], function(exports, $) {
+      return factory(exports, $);
     });
   }
 
   // CommonJS
   else if (typeof exports !== "undefined") {
     var $ = require("jquery");
-    factory(root, exports, $);
+    factory(exports, $);
   }
 
   // Browser
   else {
-    root.FormSerializer = factory(root, {}, (root.jQuery || root.Zepto || root.ender || root.$));
+    factory(root, (root.jQuery || root.Zepto || root.ender || root.$));
   }
 
-}(this, function(root, exports, $) {
+}(this, function(exports, $) {
 
   var patterns = {
     validate: /^[a-z][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
