@@ -54,4 +54,9 @@ describe("addPair", function() {
     assert.deepEqual(f.serialize(), {a: ["b", "d", "c", , , "e"]});
   });
 
+  it("should allow a key to start with a leading underscore", function() {
+    f.addPair({name: "_method", value: "post"});
+    assert.deepEqual(f.serialize(), {_method: "post"});
+  });
+
 });
