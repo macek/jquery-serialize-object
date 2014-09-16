@@ -1,33 +1,47 @@
+2.3.3
+-----
+* Use jQuery-1.11.1 in testing for maximum browser compatibility
+* Use cdnjs to deliver jQuery for testing
+* Patch requirejs bug #30
+* Improve formatting of HISTORY
+
 2.3.2
-Rename jquery.json file. wups!
+-----
+* Rename jquery.json file. wups!
 
 2.3.1
-Add jquery.json for publishing to http://plugins.jquery.com
+-----
+* Add jquery.json for publishing to http://plugins.jquery.com
 
 2.3.0
-IE8 fix
+-----
+* IE8 fix
 
 2.2.0
-Expose regexp patterns via FormSerializer.patterns
-Improve legibility of FormSerializer
+-----
+* Expose regexp patterns via FormSerializer.patterns
+* Improve legibility of FormSerializer
 
 2.1.0
-Fix #16: .serializeJSON was not properly exposed to jQuery
-Front-end testing with mocha and chai
-Automated build process with uglifyjs
-Removed server-side dependencies
-- browserify
-- mocha
-- jquery-extend
+-----
+* Fix #16: .serializeJSON was not properly exposed to jQuery
+* Front-end testing with mocha and chai
+* Automated build process with uglifyjs
+* Removed server-side dependencies
+  * browserify
+  * mocha
+  * jquery-extend
 
 2.0.1
-Removed ECMAScript 5 dependencies
-- Array.prototype.forEach
-- Function.prototype.bind
+-----
+* Removed ECMAScript 5 dependencies
+  * Array.prototype.forEach
+  * Function.prototype.bind
 
 2.0.0
-Fully backed by tests
-.serializeObject works the same
-.serializeJSON is a new function
-CoffeeScript has been dropped
-Now bundles with browserify
+-----
+* Fully backed by tests
+* .serializeObject works the same
+* .serializeJSON is a new function
+* CoffeeScript has been dropped
+* Now bundles with browserify
