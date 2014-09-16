@@ -8,5 +8,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/macek/jquery-serialize-object.git"
-  }
+  },
+  "license": "BSD-3-Clause"
 }

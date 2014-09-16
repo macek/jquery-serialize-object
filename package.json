@@ -23,7 +23,7 @@
     "name": "jQuery serializeObject"
   },
   "author": "macek <paulmacek@gmail.com>",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/macek/jquery-serialize-object/issues"
   },
