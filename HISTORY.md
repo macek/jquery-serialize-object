@@ -1,3 +1,9 @@
+2.3.4
+-----
+* automatically build before running tests
+* allow keys to start with a leading underscore #31
+* use markdown for HISTORY
+
 2.3.3
 -----
 * Use jQuery-1.11.1 in testing for maximum browser compatibility
