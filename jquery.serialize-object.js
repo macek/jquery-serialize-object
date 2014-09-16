@@ -35,7 +35,7 @@
     named:    /^[a-z0-9_]+$/i
   };
 
-  function FormSerializer(helper) {
+  function FormSerializer(helper, $form) {
 
     // private variables
     var data     = {},
@@ -80,9 +80,19 @@
       return pushes[key]++;
     }
 
+    function isCheckbox (name) {
+      var selector = '[name="' + name + '"]';
+      return $(selector, $form).attr('type') === 'checkbox';
+    }
+
     function addPair(pair) {
+      var obj;
+
       if (!patterns.validate.test(pair.name)) return this;
-      var obj = makeObject(pair.name, pair.value);
+      if (pair.value === 'on' && isCheckbox(pair.name)) {
+        pair.value = true
+      }
+      obj = makeObject(pair.name, pair.value);
       data = helper.extend(true, data, obj);
       return this;
     }
@@ -118,7 +128,7 @@
     if (this.length > 1) {
       return new Error("jquery-serialize-object can only serialize one form at a time");
     }
-    return new FormSerializer($).
+    return new FormSerializer($, this).
       addPairs(this.serializeArray()).
       serialize();
   };
@@ -127,7 +137,7 @@
     if (this.length > 1) {
       return new Error("jquery-serialize-object can only serialize one form at a time");
     }
-    return new FormSerializer($).
+    return new FormSerializer($, this).
       addPairs(this.serializeArray()).
       serializeJSON();
   };
