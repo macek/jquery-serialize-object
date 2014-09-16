@@ -3,7 +3,7 @@
  * @copyright 2014, macek <paulmacek@gmail.com>
  * @link https://github.com/macek/jquery-serialize-object
  * @license BSD
- * @version 2.3.4
+ * @version 2.4.0
  */
 (function(root, factory) {
 

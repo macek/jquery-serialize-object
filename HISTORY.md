@@ -1,3 +1,9 @@
+2.4.0
+-----
+* API: FormSerializer(helper) => FormSerializer(helper, $form)
+* move unit tests to test/unit
+* encode checkbox inputs as booleans #27
+
 2.3.4
 -----
 * automatically build before running tests
