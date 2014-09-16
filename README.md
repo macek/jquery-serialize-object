@@ -43,7 +43,7 @@ for both cases.
 
 Look forward to these `>= 2.5.0`
 
-**Update:** `2.4.0` now serializes `<input type="checkbox">` as a `boolean`. See
+**Update:** `>= 2.4.0` now serializes `<input type="checkbox">` as a `boolean`. See
 the [test][boolean] for specific behavior.
 
 

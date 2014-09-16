@@ -1,3 +1,10 @@
+2.4.1
+-----
+* change deprecated component.json to bower.json
+* update license identifier to BSD-3-Clause
+* build now puts plugin in /dist
+* update jquery dependency to ^1.11.1 in jquery.json
+
 2.4.0
 -----
 * API: FormSerializer(helper) => FormSerializer(helper, $form)
