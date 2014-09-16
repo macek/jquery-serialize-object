@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run-script build && open ./test/test.html",
     "build": "npm run-script minify",
-    "minify": "uglifyjs jquery.serialize-object.js -m -c --comments > jquery.serialize-object.min.js"
+    "minify": "uglifyjs jquery.serialize-object.js -m -c --comments > dist/jquery.serialize-object.min.js"
   },
   "repository": {
     "type": "git",
