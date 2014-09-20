@@ -1,6 +1,6 @@
 {
   "name": "form-serializer",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "serialize form fields into an object or JSON",
   "main": "./jquery.serialize-object.js",
   "scripts": {
@@ -28,6 +28,6 @@
     "url": "https://github.com/macek/jquery-serialize-object/issues"
   },
   "devDependencies": {
-    "uglify-js": "^2.4.22"
+    "uglify-js": "^2.4.32"
   }
 }

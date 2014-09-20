@@ -1,3 +1,8 @@
+2.4.3
+-----
+* fix location of testing script
+
+
 2.4.2
 -----
 * add missing ignore entry to bower.json. wups!
