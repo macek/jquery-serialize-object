@@ -20,7 +20,7 @@
         jquery: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min"
       }
     });
-    require(["../jquery.serialize-object.min", "jquery"], function(FormSerializer, $) {
+    require(["../dist/jquery.serialize-object.min", "jquery"], function(FormSerializer, $) {
       $("#test1").text(JSON.stringify(typeof FormSerializer));
       $("#test2").text(JSON.stringify(typeof $.fn.serializeObject));
     });
