@@ -43,7 +43,7 @@
 
     // private API
     function build(base, key, value) {
-      base[key] = value;
+      base[key] = (String(Number(value)) === value ? Number(value) : value );
       return base;
     }
 
