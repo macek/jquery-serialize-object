@@ -48,36 +48,49 @@
     }
 
     function makeObject(root, value) {
-
-      var keys = root.match(patterns.key), k;
+      var keys = root.match(patterns.key), k, key_pushes = '';
 
       // nest, nest, ..., nest
       while ((k = keys.pop()) !== undefined) {
         // foo[]
         if (patterns.push.test(k)) {
-          var idx = incrementPush(root.replace(/\[\]$/, ''));
+          var idx = incrementPush(keys.join('.'), key_pushes);
           value = build([], idx, value);
+          key_pushes += '[' + idx +']';
         }
 
         // foo[n]
         else if (patterns.fixed.test(k)) {
           value = build([], k, value);
+          key_pushes += '[' + k + ']';
         }
 
         // foo; foo[bar]
         else if (patterns.named.test(k)) {
           value = build({}, k, value);
+          key_pushes += k;
         }
       }
 
       return value;
     }
 
-    function incrementPush(key) {
-      if (pushes[key] === undefined) {
-        pushes[key] = 0;
+    function incrementPush(path, key) {
+      pushes[path] = pushes[path] || {
+        size: 0,
+        keys_set: {}
+      };
+      if (pushes[path].keys_set[key]) {
+        pushes[path].size ++;
+        pushes[path].keys_set = {}
+        for (var sub_path in pushes){
+          if (sub_path != path && 0 == sub_path.indexOf(path)){
+            pushes[sub_path] = undefined;
+          }
+        }
       }
-      return pushes[key]++;
+      pushes[path].keys_set[key] = true
+      return pushes[path].size;
     }
 
     function encode(pair) {
