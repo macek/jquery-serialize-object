@@ -4,7 +4,7 @@
   "description": "serialize form fields into an object or JSON",
   "main": "./jquery.serialize-object.js",
   "scripts": {
-    "test": "npm run-script build && open ./test/test.html",
+    "test": "npm run-script build && xdg-open ./test/test.html",
     "build": "npm run-script minify",
     "minify": "uglifyjs jquery.serialize-object.js -m -c --comments > dist/jquery.serialize-object.min.js"
   },
@@ -28,6 +28,6 @@
     "url": "https://github.com/macek/jquery-serialize-object/issues"
   },
   "devDependencies": {
-    "uglify-js": "^2.4.32"
+    "uglify-js": "^2.4.16"
   }
 }
