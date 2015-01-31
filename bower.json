@@ -6,7 +6,7 @@
     "Paul Macek <paulmacek@gmail.com> (https://github.com/macek)"
   ],
   "dependencies": {
-    "jquery": "^1.11.1"
+    "jquery": ">=1.2"
   },
   "repository": {
     "type": "git",
