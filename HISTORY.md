@@ -1,3 +1,7 @@
+2.4.5
+-----
+* update example for hyphen notation
+
 2.4.4
 -----
 * fix uglify-js dependency
