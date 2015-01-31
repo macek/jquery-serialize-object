@@ -16,7 +16,8 @@
     "form",
     "serialize",
     "json",
-    "object"
+    "object",
+    "jquery-plugin"
   ],
   "plugin": {
     "type": "jQuery",
