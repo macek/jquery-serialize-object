@@ -1,3 +1,9 @@
+2.4.4
+-----
+* fix uglify-js dependency
+* loosen jquery version requirement
+
+
 2.4.3
 -----
 * fix location of testing script
