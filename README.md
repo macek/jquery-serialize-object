@@ -96,7 +96,7 @@ You can now configure these to your heart's content.
 
 ```js
 $.extend(FormSerializer.patterns, {
-  validate: /^[a-z][a-z0-9_-]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
+  validate: /^[a-z][a-z0-9_-]*(?:\[(?:\d*|[a-z0-9_-]+)\])*$/i,
   key:      /[a-z0-9_-]+|(?=\[\])/gi,
   named:    /^[a-z0-9_-]+$/i
 });

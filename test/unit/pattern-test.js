@@ -31,14 +31,14 @@ describe("patterns", function() {
 
   it("override patterns to allow hyphens", function() {
     $.extend(FormSerializer.patterns, {
-      validate: /^[a-z][a-z0-9_-]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
+      validate: /^[a-z][a-z0-9_-]*(?:\[(?:\d*|[a-z0-9_-]+)\])*$/i,
       key:      /[a-z0-9_-]+|(?=\[\])/gi,
       named:    /^[a-z0-9_-]+$/i
     });
 
     var f = new FormSerializer($);
-    f.addPair({name: "a-b[c]", value: "d"});
-    assert.strictEqual(f.serializeJSON(), '{"a-b":{"c":"d"}}');
+    f.addPair({name: "a-b[c-d]", value: "e"});
+    assert.strictEqual(f.serializeJSON(), '{"a-b":{"c-d":"e"}}');
 
     resetPatterns();
   });
