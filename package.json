@@ -4,8 +4,8 @@
   "description": "serialize form fields into an object or JSON",
   "main": "./jquery.serialize-object.js",
   "scripts": {
-    "test": "npm run-script build && open ./test/test.html",
-    "build": "npm run-script minify",
+    "test": "npm run build && open ./test/test.html",
+    "build": "npm run minify",
     "minify": "uglifyjs jquery.serialize-object.js -m -c --comments > dist/jquery.serialize-object.min.js"
   },
   "repository": {
