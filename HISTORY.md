@@ -1,3 +1,8 @@
+2.5.0
+-----
+* remove jquery.json file
+* add ability to serialize multiple elements
+
 2.4.5
 -----
 * update example for hyphen notation
