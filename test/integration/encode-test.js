@@ -27,4 +27,4 @@ describe("encode", function() {
     assert.deepEqual($form.serializeObject(), {a: "on"});
   });
 
-})
+});
