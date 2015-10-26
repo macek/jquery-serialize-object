@@ -28,7 +28,7 @@
 }(this, function(exports, $) {
 
   var patterns = {
-    validate: /^[a-z_][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
+    validate: /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\n\\]|\\.)*?)\2)\]/g,
     key:      /[a-z0-9_]+|(?=\[\])/gi,
     push:     /^$/,
     fixed:    /^\d+$/,
@@ -90,7 +90,7 @@
     }
 
     function addPair(pair) {
-      if (!patterns.validate.test(pair.name)) return this;
+      if (!(patterns.validate.test(pair.name))) return this;
       var obj = makeObject(pair.name, encode(pair));
       data = helper.extend(true, data, obj);
       return this;
