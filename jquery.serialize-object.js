@@ -35,6 +35,9 @@
     named:    /^[a-z0-9_]+$/i
   };
 
+  // allow to use number keys instead of fixed numeric array indexes
+  var numkeys = false;
+
   function FormSerializer(helper, $form) {
 
     // private variables
@@ -61,7 +64,11 @@
 
         // foo[n]
         else if (patterns.fixed.test(k)) {
-          value = build([], k, value);
+          var base = [];
+          if (numkeys) {
+              base = {};
+          }
+          value = build(base, k, value);
         }
 
         // foo; foo[bar]
@@ -121,15 +128,24 @@
     this.serializeJSON = serializeJSON;
   }
 
+  function parseOpt(opt) {
+    if (!opt) return true;
+    if (opt.numkeys && opt.numkeys === true) {
+      numkeys = true;
+    }
+  }
+
   FormSerializer.patterns = patterns;
 
-  FormSerializer.serializeObject = function serializeObject() {
+  FormSerializer.serializeObject = function serializeObject(opt) {
+    parseOpt(opt);
     return new FormSerializer($, this).
       addPairs(this.serializeArray()).
       serialize();
   };
 
-  FormSerializer.serializeJSON = function serializeJSON() {
+  FormSerializer.serializeJSON = function serializeJSON(opt) {
+    parseOpt(opt);
     return new FormSerializer($, this).
       addPairs(this.serializeArray()).
       serializeJSON();

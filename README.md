@@ -157,6 +157,14 @@ $.extend(FormSerializer.patterns, {
   //=> {foo: {bar: "a", bof: "b"}, hello: "world"}
   ```
 
+*Parameters*
+
+* `numkeys` &mdash; allow to use number keys instead of fixed numeric array indexes. False by default.
+
+  ```js
+  $("form").serializeObject({'numkeys':true});
+  ```
+
 Tests
 -----
 
