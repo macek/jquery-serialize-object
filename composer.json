@@ -1,0 +1,17 @@
+{
+  "name": "macek/jquery-serialize-object",
+  "description": "Adds the method serializeObject to jQuery, to perform complex form serialization into JavaScript objects.",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/macek/jquery-serialize-object",
+  "authors": [
+    {
+      "name": "Paul Macek",
+      "role": "Author",
+      "email": "paulmacek@gmail.com",
+      "homepage": "https://github.com/macek"
+    }
+  ],
+  "require": {
+    "components/jquery": ">=1.2"
+  }
+}
