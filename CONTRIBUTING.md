@@ -1,5 +1,5 @@
 Contributing
-------------
+============
 
 All pull requests **must** be backed by tests or they will be rejected.
 
