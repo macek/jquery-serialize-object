@@ -185,16 +185,7 @@ If you'd like to use the the `1.0.0` version, it is still available [here][legac
 Contributing
 ------------
 
-All pull requests **must** be backed by tests or they will be rejected.
-
-Once you have finished your changes, build the new plugin:
-
-```sh
-$ npm run-script build
-```
-
-**Do not** bump the version. I will handle versioning.
-
+See : [CONTRIBUTING](./CONTRIBUTING.md)
 
 [SO]: http://stackoverflow.com/a/8407771/184600
 [w3c_controls]: http://www.w3.org/TR/html401/interact/forms.html#h-17.13.2
