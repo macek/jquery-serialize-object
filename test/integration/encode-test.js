@@ -57,4 +57,9 @@ describe("encode", function() {
     assert.deepEqual($form.serializeObject(), {a: "6"});
   });
 
+  it("number inputs as empty strings if encode option turned on but empty field", function() {
+    var $form = $('<form><input type="number" name="a" value=""></form>');
+    assert.deepEqual($form.serializeObject({'encodes': { 'number': true } }), {a: ""});
+  });
+
 });

@@ -95,7 +95,8 @@
           if(!options.encodes.number) {
             return pair.value;
           }
-          return parseInt(pair.value);
+          var num = parseInt(pair.value);
+          return isNaN(num) ? pair.value : num;
         default:
           return pair.value;
       }
