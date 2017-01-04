@@ -24,10 +24,16 @@ Installation
 **option 1: Bower**
 
 ```sh
+$ npm install form-serializer
+```
+
+**option 2: Bower**
+
+```sh
 $ bower install jquery-serialize-object
 ```
 
-**option 2: Manual**
+**option 3: Manual**
 
 Copy the `dist/jquery-serialize-object.min.js` to your project.
 
