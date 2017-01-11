@@ -21,7 +21,7 @@ to determine which inputs should be included; in particular:
 Installation
 ------------
 
-**option 1: Bower**
+**option 1: npm**
 
 ```sh
 $ npm install form-serializer
