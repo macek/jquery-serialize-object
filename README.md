@@ -21,13 +21,19 @@ to determine which inputs should be included; in particular:
 Installation
 ------------
 
-**option 1: Bower**
+**option 1: NPM**
+
+```sh
+$ npm install form-serializer
+```
+
+**option 2: Bower**
 
 ```sh
 $ bower install jquery-serialize-object
 ```
 
-**option 2: Manual**
+**option 3: Manual**
 
 Copy the `dist/jquery-serialize-object.min.js` to your project.
 
