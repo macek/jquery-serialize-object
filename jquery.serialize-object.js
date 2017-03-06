@@ -30,10 +30,10 @@
   function serializeArray(form) {
     var data = form.serializeArray();
 
-    $(':checkbox[disabled], :radio[disabled]', form).each(function() {
+    $(':checkbox[disabled]', form).each(function() {
       data.push({
         name: $(this).attr('name'),
-        value: this.checked ? 'on' : 'off',
+        value: this.checked,
       });
     });
 
