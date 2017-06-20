@@ -35,7 +35,7 @@ $ bower install jquery-serialize-object
 
 **option 3: Manual**
 
-Copy the `dist/jquery-serialize-object.min.js` to your project.
+Copy the `dist/jquery.serialize-object.min.js` to your project.
 
 You can include the plugin in the `HEAD` element or at the bottom of your `BODY`
 tag. Wherever you choose to add it, it **must** be included after your jQuery.
