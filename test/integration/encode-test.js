@@ -26,5 +26,12 @@ describe("encode", function() {
     var $form = $('<form><input name="a" value="on" checked></form>');
     assert.deepEqual($form.serializeObject(), {a: "on"});
   });
+  
+  it("should pass issue #107", function() {
+    var $form1 = $('<form id="f1"><input name="a" type="radio" value="0" checked/><input name="a" type="radio" value="-1"/></form>');
+    var $form2 = $('<form id="f2"><input name="a" type="radio" value="1"  checked/><input name="a" type="radio" value="2"/></form>');
+    assert.deepEqual($form1.serializeObject(), {a: "0"});
+    assert.deepEqual($form2.serializeObject(), {a: "1"});
+  });
 
 });
