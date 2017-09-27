@@ -35,11 +35,14 @@
     named:    /^[a-z0-9_]+$/i
   };
 
-  function FormSerializer(helper, $form) {
+  function FormSerializer(helper, $form, optionDef) {
 
     // private variables
     var data     = {},
-        pushes   = {};
+        pushes   = {},
+        options  = {};
+
+    options = initializeOptions(optionDef);
 
     // private API
     function build(base, key, value) {
@@ -83,7 +86,17 @@
     function encode(pair) {
       switch ($('[name="' + pair.name + '"]', $form).attr("type")) {
         case "checkbox":
+          if(!options.encodes.checkbox) {
+            return pair.value;
+          }
           return pair.value === "on" ? true : pair.value;
+        case "number":
+        case "num":
+          if(!options.encodes.number) {
+            return pair.value;
+          }
+          var num = parseInt(pair.value);
+          return isNaN(num) ? pair.value : num;
         default:
           return pair.value;
       }
@@ -113,6 +126,14 @@
     function serializeJSON() {
       return JSON.stringify(serialize());
     }
+    
+    function initializeOptions(optionDef) {
+      var options = optionDef === undefined ? {} : optionDef;
+      options.encodes = options.encodes === undefined ? {} : options.encodes;
+      options.encodes.checkbox = options.encodes.checkbox === undefined ? true : options.encodes.checkbox;
+      options.encodes.number = options.encodes.number === undefined ? false : options.encodes.number;
+      return options;
+    }
 
     // public API
     this.addPair = addPair;
@@ -123,14 +144,14 @@
 
   FormSerializer.patterns = patterns;
 
-  FormSerializer.serializeObject = function serializeObject() {
-    return new FormSerializer($, this).
+  FormSerializer.serializeObject = function serializeObject(optionDef) {
+    return new FormSerializer($, this, optionDef).
       addPairs(this.serializeArray()).
       serialize();
   };
 
-  FormSerializer.serializeJSON = function serializeJSON() {
-    return new FormSerializer($, this).
+  FormSerializer.serializeJSON = function serializeJSON(optionDef) {
+    return new FormSerializer($, this, optionDef).
       addPairs(this.serializeArray()).
       serializeJSON();
   };
