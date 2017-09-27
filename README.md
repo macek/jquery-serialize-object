@@ -126,7 +126,7 @@ $.extend(FormSerializer.patterns, {
 
 *Key styles*
 
-* `push` &mdash; pushe a value to an array
+* `push` &mdash; push a value to an array
 
   ```html
   <input name="foo[]" value="a">
