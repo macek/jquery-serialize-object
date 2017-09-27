@@ -34,4 +34,14 @@ describe("encode", function() {
     assert.deepEqual($form2.serializeObject(), {a: "1"});
   });
 
+  it("disabled checkbox input that is checked", function() {
+    var $form = $('<form><input type="checkbox" name="a" value="on" checked disabled></form>');
+    assert.deepEqual($form.serializeObject(), {a: true});
+  });
+
+  it("disabled checkbox input that is unchecked", function() {
+    var $form = $('<form><input type="checkbox" name="a" value="on" disabled></form>');
+    assert.deepEqual($form.serializeObject(), {a: false});
+  });
+
 });

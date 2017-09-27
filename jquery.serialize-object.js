@@ -27,6 +27,19 @@
 
 }(this, function(exports, $) {
 
+  function serializeArray(form) {
+    var data = form.serializeArray();
+
+    $(':checkbox[name]', form).each(function() {
+      data.push({
+        name: $(this).attr('name'),
+        value: this.checked ? this.value : false,
+      });
+    });
+
+    return data;
+  }
+
   var patterns = {
     validate: /^[a-z_][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
     key:      /[a-z0-9_]+|(?=\[\])/gi,
@@ -125,13 +138,13 @@
 
   FormSerializer.serializeObject = function serializeObject() {
     return new FormSerializer($, this).
-      addPairs(this.serializeArray()).
+      addPairs(serializeArray(this)).
       serialize();
   };
 
   FormSerializer.serializeJSON = function serializeJSON() {
     return new FormSerializer($, this).
-      addPairs(this.serializeArray()).
+      addPairs(serializeArray(this)).
       serializeJSON();
   };
 
