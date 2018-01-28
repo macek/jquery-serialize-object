@@ -28,11 +28,11 @@
 }(this, function(exports, $) {
 
   var patterns = {
-    validate: /^[a-z_][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,
-    key:      /[a-z0-9_]+|(?=\[\])/gi,
+    validate: /^[a-z_\-][a-z0-9_\-]*(?:\[(?:\d*|[a-z0-9_\-]+)\])*$/i,
+    key:      /[a-z0-9_\-]+|(?=\[\])/gi,
     push:     /^$/,
     fixed:    /^\d+$/,
-    named:    /^[a-z0-9_]+$/i
+    named:    /^[a-z0-9_\-]+$/i
   };
 
   function FormSerializer(helper, $form) {
