@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "6.12.0"
+  - "node"
+  - "lts/*"
+  - "8"
+  - "7"
+  - "6"
+  - "5"
+  - "4"
+
+before_script:
+  - yarn global add bower
+  - bower -v
+  - bower i
+
+run_script:
+  - npm test
