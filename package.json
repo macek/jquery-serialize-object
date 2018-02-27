@@ -5,6 +5,7 @@
   "main": "./jquery.serialize-object.js",
   "scripts": {
     "test": "npm run build",
+    "spec": "mocha -u tdd --reporter spec",
     "build": "npm run minify",
     "minify": "uglifyjs jquery.serialize-object.js -m -c --comments > dist/jquery.serialize-object.min.js"
   },

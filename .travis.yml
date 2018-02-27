@@ -20,5 +20,6 @@ before_script:
   - yarn global add mocha-phantomjs
 
 script:
-  - npm test
+  - yarn run test
   - mocha-phantomjs ./test/test.html
+  - yarn run spec
