@@ -18,3 +18,4 @@ before_script:
 
 run_script:
   - npm test
+  - cat ./test/test.html
