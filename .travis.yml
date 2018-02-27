@@ -15,7 +15,10 @@ before_script:
   - yarn global add bower
   - bower -v
   - bower i
+  - yarn global add phantomjs
+  - phantomjs --version
+  - yarn global add mocha-phantomjs
 
 script:
   - npm test
-  - cat ./test/test.html
+  - mocha-phantomjs ./test/test.html
