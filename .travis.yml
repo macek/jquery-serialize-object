@@ -16,6 +16,6 @@ before_script:
   - bower -v
   - bower i
 
-run_script:
+script:
   - npm test
   - cat ./test/test.html
