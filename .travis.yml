@@ -23,6 +23,6 @@ before_script:
   - mocha-phantomjs --version
 
 script:
-  - yarn run test
+  - yarn run build
   - mocha-phantomjs ./test/test.html
   - yarn run spec
