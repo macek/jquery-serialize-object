@@ -30,6 +30,7 @@
     "url": "https://github.com/macek/jquery-serialize-object/issues"
   },
   "devDependencies": {
+    "mocha": "^5.0.1",
     "uglify-js": "^2.4.16"
   }
 }
