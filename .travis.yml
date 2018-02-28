@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - "6.12.0"
+  - "node"
+  - "lts/*"
+  - "8"
+  - "7"
+  - "6"
+  - "5"
+  - "4"
+
+cache: yarn
+
+before_script:
+  - yarn global add bower
+  - bower -v
+  - bower i
+  - yarn global add phantomjs
+  - phantomjs --version
+  - yarn global add mocha
+  - mocha --version
+  - yarn global add mocha-phantomjs
+  - mocha-phantomjs --version
+
+script:
+  - yarn run build
+  - mocha-phantomjs ./test/test.html
+  - yarn run spec

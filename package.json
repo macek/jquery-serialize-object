@@ -5,8 +5,9 @@
   "main": "./jquery.serialize-object.js",
   "scripts": {
     "test": "npm run build && open ./test/test.html",
-    "build": "npm run minify",
-    "minify": "uglifyjs jquery.serialize-object.js -m -c --comments > dist/jquery.serialize-object.min.js"
+    "spec": "mocha -u tdd --reporter spec",
+    "build": "npm run minify > dist/jquery.serialize-object.min.js",
+    "minify": "uglifyjs jquery.serialize-object.js -m -c --comments"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "url": "https://github.com/macek/jquery-serialize-object/issues"
   },
   "devDependencies": {
+    "mocha": "^5.0.1",
     "uglify-js": "^2.4.16"
   }
 }
