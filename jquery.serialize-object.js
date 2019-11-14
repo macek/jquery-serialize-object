@@ -84,6 +84,8 @@
       switch ($('[name="' + pair.name + '"]', $form).attr("type")) {
         case "checkbox":
           return pair.value === "on" ? true : pair.value;
+        case "number":
+          return pair.value = parseInt(pair.value);
         default:
           return pair.value;
       }
